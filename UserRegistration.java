@@ -8,6 +8,7 @@ public class UserRegistration {
 	static String lName;
     static String email;
     static String mobileNum;
+    static String password;
 
     //uc1-first-name
     static String firstNameCheck(){
@@ -41,10 +42,18 @@ public class UserRegistration {
         return mobileNum;
     }
 
+    //uc5-password-minimum8
+    static String passwordCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter password:\n(minimum 8 characters)\n");
+        password = scan.nextLine();
+        return password;
+    }
+
     //main method
     public static void main(String[] args) {
 
-		//checking first name
+		//first name check using regEx
         boolean res1 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegistration.firstNameCheck());
         System.out.println(res1);
 
@@ -54,7 +63,7 @@ public class UserRegistration {
             res1 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegistration.firstNameCheck());
         }
 
-		//chekcing last name
+		//last name check using regEx
         boolean res2 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegistration.lastNameCheck());
         System.out.println(res2);
 
@@ -64,7 +73,7 @@ public class UserRegistration {
             res2 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegistration.lastNameCheck());
         }
 
-        //email check
+        //email check using regEx
         boolean res3 = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}", UserRegistration.emailCheck());
         System.out.println(res3);
 
@@ -74,7 +83,7 @@ public class UserRegistration {
             res3 = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}", UserRegistration.emailCheck());
         }
 
-        //mobile number
+        //mobile number check using regEx
         boolean res4 = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}", UserRegistration.mobileNumCheck());
         System.out.println(res4);
 
@@ -82,6 +91,16 @@ public class UserRegistration {
         while(res4 == false){
             System.out.println("\nTry again!");
             res4 = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}", UserRegistration.mobileNumCheck());
+        }
+
+        //password check using regEx
+        boolean res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegistration.passwordCheck());
+        System.out.println(res5);
+
+        //if false
+        while(res5 == false){
+            System.out.println("\nTry again!");
+            res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegistration.passwordCheck());
         }
 
 		//print statements
